@@ -113,8 +113,7 @@
 
 <p>
     <!-- 返回帖子管理页面 -->
-	<a href="adminadminUserManage.php?">Return to post manage page</a>
-</p>
+	<a href="adminShow.php">Return to post manage page</a></p>
 
 <?php
 	echo "Debug mesage: ".$sql;

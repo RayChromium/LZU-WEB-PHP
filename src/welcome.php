@@ -9,9 +9,10 @@
 <html>
 
 	<?php
+		//debug
 		//var_dump($_COOKIE);
 		echo "<br>";
-		echo "Welcome ".$_COOKIE['username'];
+		echo "Welcome ".$_COOKIE['nikename'];
 	?>
 	<br>
 	<a href="login.php?action=logout">Logout</a>
