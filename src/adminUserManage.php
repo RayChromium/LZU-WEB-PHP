@@ -39,7 +39,22 @@
             window.location.href="userDel.php?phone="+phone;
         }
     }
-
+	function add_admin(phone)
+    {
+        var is=window.confirm("Add this user to the manager group?");
+        if(is)
+        {
+            window.location.href="addAdmin.php?phone="+phone;
+        }
+    }
+	function remove_admin(phone)
+    {
+        var is=window.confirm("Remove this user from the manager group?");
+        if(is)
+        {
+            window.location.href="removeAdmin.php?phone="+phone;
+        }
+    }
 
 </script>
 <!-- <meta http-equiv="refresh" content="10"> -->
@@ -138,8 +153,24 @@
 
 <!-- 调用js -->
 <!-- TODO：整一个用户管理 -->
+<!-- TODO: add admin功能，将特定用户的`admin`字段变为1  -->
 <p>
-	<a href="javascript:do_User_del(<?php echo $re['phone'] ?>)" >Delete</a></p>
+	<a href="javascript:do_User_del(<?php echo $re['phone'] ?>)" >Delete</a>
+	<?php
+		if($re['admin'] == 0)
+		{
+	?>
+			<a href="javascript:add_admin(<?php echo $re['phone'] ?>)">Add admin</a>
+	<?php
+		}
+		else
+		{
+	?>
+			<a href="javascript:remove_admin(<?php echo $re['phone'] ?>)">Remove admin</a>
+	<?php
+		}
+	?>
+</p>
 <hr>
 
 <?php
