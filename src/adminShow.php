@@ -98,7 +98,7 @@
 	</form> 
 	<br>
 	<!-- search部分 -->
-	<form method="get" action="show.php">
+	<form method="get" action="adminadminShow.php">
 		<fieldset>
 			
 				<label>Search</label>
@@ -156,8 +156,8 @@
 ?>
 
 <p>
-	<a href="show.php?filter=self">My posts</a>		| 	 
-    <a href="show.php">Return to recommendations</a> 	| 	
+	<a href="adminadminShow.php?filter=self">My posts</a>		| 	 
+    <a href="adminadminShow.php">Return to recommendations</a> 	| 	
     <a href="adminUserManage.php">Manage Users</a>
 </p>
 
@@ -168,7 +168,7 @@
 ?>
 <h3>Tittle:<?php echo $re['title']?></h3>
 <!-- 在Author上添加超链接，用GET传递这个人的phone进行筛选 -->
-<p>Auther:<a href = "show.php?filter=<?php echo $re["phone"] ?>"><?php echo $re['auther']?></a> | Publish time:<?php echo $re['time']?> | IP:<?php echo $re['address']?></p>
+<p>Auther:<a href = "adminadminShow.php?filter=<?php echo $re["phone"] ?>"><?php echo $re['auther']?></a> | Publish time:<?php echo $re['time']?> | IP:<?php echo $re['address']?></p>
 <p>Content:<?php echo $re['content']?></p>
 
 
@@ -184,26 +184,26 @@
 
 	for($i=1; $i<=$pageTotal ; $i++){
 			if($page==$i) echo "$i";
-			else echo "<a href='show.php?page=$i&search=$search'>$i</a>";
+			else echo "<a href='adminadminShow.php?page=$i&search=$search'>$i</a>";
 			echo " ";
 	}
 ?>
 
 
 <br>
-<a href="show.php?page=1&search=<?php echo $search?>">首页</a>
+<a href="adminadminShow.php?page=1&search=<?php echo $search?>">首页</a>
 <?php 
 	if($page!=1) {
 ?>
-	<a href="show.php?page=<?php echo $page-1?>&search=<?php echo $search?>">上一页</a>
+	<a href="adminadminShow.php?page=<?php echo $page-1?>&search=<?php echo $search?>">上一页</a>
 <?php 
 	}
 	if($page!=$pageTotal){
 ?>
-<a href="show.php?page=<?php echo $page+1?>&search=<?php echo $search?>">下一页</a>
+<a href="adminadminShow.php?page=<?php echo $page+1?>&search=<?php echo $search?>">下一页</a>
 <?php
 	}
 ?>
-<a href="show.php?page=<?php echo $pageTotal?>&search=<?php echo $search?>">尾页</a>
+<a href="adminadminShow.php?page=<?php echo $pageTotal?>&search=<?php echo $search?>">尾页</a>
 
   

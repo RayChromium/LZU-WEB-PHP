@@ -179,9 +179,9 @@
 <!-- 在Author上添加超链接，用GET传递这个人的phone进行筛选 -->
 <p>Auther:<a href = "show.php?filter=<?php echo $re["phone"] ?>"><?php echo $re['auther']?></a> | Publish time:<?php echo $re['time']?> | IP:<?php echo $re['address']?></p>
 <p>Content:<?php echo $re['content']?></p>
-<!-- TODO: 如果不是管理员，或者查看的不是自己发布的内容就根本不显示Edit与Delete连接 -->
+<!-- TODO: 如果查看的不是自己发布的内容就根本不显示Edit与Delete连接 -->
 <?php
-	if($re["phone"]==$_COOKIE["phone"] || $_COOKIE["logphone"] == "admin")
+	if($re["phone"]==$_COOKIE["phone"])
 	{
 ?>
 <!-- 调用js -->

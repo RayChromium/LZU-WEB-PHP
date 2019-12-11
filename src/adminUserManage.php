@@ -113,7 +113,7 @@
 
 <p>
     <!-- 返回帖子管理页面 -->
-	<a href="adminShow.php?">Return to post manage page</a>
+	<a href="adminadminUserManage.php?">Return to post manage page</a>
 </p>
 
 <?php
@@ -150,26 +150,26 @@
 
 	for($i=1; $i<=$pageTotal ; $i++){
 			if($page==$i) echo "$i";
-			else echo "<a href='show.php?page=$i&search=$search'>$i</a>";
+			else echo "<a href='adminUserManage.php?page=$i&search=$search'>$i</a>";
 			echo " ";
 	}
 ?>
 
 
 <br>
-<a href="show.php?page=1&search=<?php echo $search?>">首页</a>
+<a href="adminUserManage.php?page=1&search=<?php echo $search?>">首页</a>
 <?php 
 	if($page!=1) {
 ?>
-	<a href="show.php?page=<?php echo $page-1?>&search=<?php echo $search?>">上一页</a>
+	<a href="adminUserManage.php?page=<?php echo $page-1?>&search=<?php echo $search?>">上一页</a>
 <?php 
 	}
 	if($page!=$pageTotal){
 ?>
-<a href="show.php?page=<?php echo $page+1?>&search=<?php echo $search?>">下一页</a>
+<a href="adminUserManage.php?page=<?php echo $page+1?>&search=<?php echo $search?>">下一页</a>
 <?php
 	}
 ?>
-<a href="show.php?page=<?php echo $pageTotal?>&search=<?php echo $search?>">尾页</a>
+<a href="adminUserManage.php?page=<?php echo $pageTotal?>&search=<?php echo $search?>">尾页</a>
 
   
