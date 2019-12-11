@@ -49,7 +49,22 @@
 		}
 
 	}
-
+	function add_Recommend(id)
+    {
+        var is=window.confirm("Add this post to recommended list?");
+        if(is)
+        {
+            window.location.href="addRecommend.php?id="+id;
+        }
+    }
+	function remove_Recommend(id)
+    {
+        var is=window.confirm("Remove this post from the recommended list?");
+        if(is)
+        {
+            window.location.href="removeRecommend.php?phone="+phone;
+        }
+    }
 
 </script>
 <!-- <meta http-equiv="refresh" content="10"> -->
@@ -168,15 +183,28 @@
 ?>
 <h3>Tittle:<?php echo $re['title']?></h3>
 <!-- 在Author上添加超链接，用GET传递这个人的phone进行筛选 -->
-<p>Auther:<a href = "adminadminShow.php?filter=<?php echo $re["phone"] ?>"><?php echo $re['auther']?></a> | Publish time:<?php echo $re['time']?> | IP:<?php echo $re['address']?></p>
-<p>Content:<?php echo $re['content']?></p>
+<p>Nickname:  <a href = "show.php?filter=<?php echo $re["phone"] ?>"><?php echo $re['nickname']?></a> | Publish time:<?php echo $re['time']?> | IP:<?php echo $re['address']?></p>
+<p>Content:  <?php echo $re['content']?></p>
 
 
 <!-- 调用js -->
+<!-- TODO: 增加add Recommend和remove Recommend功能 -->
 <p>
-	<a href="edit.php?id=<?php echo $re['id'] ?>" >Edit</a>|
-	<a href="javascript:do_del(<?php echo $re['id'] ?>)" >Delete</a></p>
-
+<?php
+		if($re['isRec'] == 0)
+		{
+	?>
+			<a href="javascript:add_Recommend(<?php echo $re['id'] ?>)">Add recommend</a>
+	<?php
+		}
+		else
+		{
+	?>
+			<a href="javascript:remove_Recommend(<?php echo $re['id'] ?>)">Remove recommend</a>
+	<?php
+		}
+	?>
+</p>
 <hr>
 
 <?php
