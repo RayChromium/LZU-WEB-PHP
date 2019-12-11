@@ -53,7 +53,7 @@
 				setcookie("logphone", $_POST["logphone"],time()+60*60*24*7);
 				//不设时间，浏览器关闭就没有了
 				setcookie("isLoggedIn","1", time()+60*	60*24*7);
-				header("Location:show.php");
+				header("Location:adminShow.php");
 			}else{
 				echo("密码错误");
 			}
