@@ -17,7 +17,8 @@
 		//$sql = "select * from `bbs` where `title` like '%$search%'";
 	}
 	//不search
-	else $k=1;
+	//显示自己发布的内容和推荐内容
+	else $k= "`isRec` = 1  or `phone` = '".$_COOKIE['logphone']."'";
 ?>
 
 
@@ -145,9 +146,10 @@
 
 	// echo $sql;
 	$s = $conn->query($sql);
-	echo $conn->error;
+	// echo $conn->error;
 	
-	while ($re = $s->fetch_array()) {
+	//忽略在空表状态下fetch_array()产生的Error
+	while (@$re = $s->fetch_array()) {
 		
 ?>
 <h3>Tittle:<?php echo $re['title']?></h3>

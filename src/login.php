@@ -27,7 +27,7 @@
 				<label>Login</label>
 				<br>
 
-				Username<input type="text" name="username">
+				Phone<input type="text" name="logphone">
 				<br>
 				Password<input type="text" name="password">
 				<br>
@@ -40,7 +40,7 @@
 
 <?php
 	function clearCookie(){
-		setcookie( 'username', '', time()-3600);
+		setcookie( 'logphone', '', time()-3600);
 		setcookie("isLoggedIn", '', time()-3600);
 		//setcookie('visit','',time()-3600);
 		//setcookie('lasttime','',time()-3600);
@@ -49,8 +49,8 @@
 		if($_GET["action"] == "login"){
 			clearCookie();
 			//验证密码
-			if($_POST["username"]=="admin"&&$_POST["password"]=="123456"){
-				setcookie("username", $_POST["username"],time()+60*60*24*7);
+			if($_POST["logphone"]=="admin"&&$_POST["password"]=="123456"){
+				setcookie("logphone", $_POST["logphone"],time()+60*60*24*7);
 				//不设时间，浏览器关闭就没有了
 				setcookie("isLoggedIn","1", time()+60*	60*24*7);
 				header("Location:show.php");
