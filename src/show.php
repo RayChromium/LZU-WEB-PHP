@@ -80,10 +80,6 @@
 				<input type="text" name="title">
 				<br>
 
-				<label>Auther</label>
-				<input type="text" name="auther">
-				<br>
-
 				<label>Text Area</label>
 				<textarea type="text" name="content"></textarea>
 				<br>
@@ -160,6 +156,8 @@
 	// echo $sql;
 	$s = $conn->query($sql);
 	// echo $conn->error;
+	// echo $_COOKIE["logphone"];
+	// echo "<br>Debug message:".$_COOKIE["nickname"]."<br>";
 	
 ?>
 
@@ -177,8 +175,8 @@
 ?>
 <h3>Tittle:<?php echo $re['title']?></h3>
 <!-- 在Author上添加超链接，用GET传递这个人的phone进行筛选 -->
-<p>Auther:<a href = "show.php?filter=<?php echo $re["phone"] ?>"><?php echo $re['auther']?></a> | Publish time:<?php echo $re['time']?> | IP:<?php echo $re['address']?></p>
-<p>Content:<?php echo $re['content']?></p>
+<p>Nickname:  <a href = "show.php?filter=<?php echo $re["phone"] ?>"><?php echo $re['nickname']?></a> | Publish time:<?php echo $re['time']?> | IP:<?php echo $re['address']?></p>
+<p>Content:  <?php echo $re['content']?></p>
 <!-- TODO: 如果查看的不是自己发布的内容就根本不显示Edit与Delete连接 -->
 <?php
 	if($re["phone"]==$_COOKIE["phone"])

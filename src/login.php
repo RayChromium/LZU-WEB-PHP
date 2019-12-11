@@ -100,12 +100,12 @@
 					setcookie("isLoggedIn","1", time()+60*	60*24*7);
 					//是否为admin
 					if ($checkpass['admin']=="1") {
-						setcookie("nikename",'Admin',time()+60*60*24*7);
+						setcookie("nickname",'Admin',time()+60*60*24*7);
 						//header("Location:welcome.php");
 						header("Location:adminshow.php");
 					}
 					else {
-						setcookie("nikename", $checkpass['nickname'],time()+60*60*24*7);
+						setcookie("nickname", $checkpass['nickname'],time()+60*60*24*7);
 						//header("Location:welcome.php");
 						header("Location:show.php");
 					}

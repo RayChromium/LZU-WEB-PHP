@@ -7,8 +7,8 @@
 	else {
 		$address = $_SERVER['REMOTE_ADDR'];
 
-		$sql = "INSERT INTO `bbs` (`id`, `title`, `auther`, `content`, `time`, `address`) 
-		VALUES (NULL, '".$_COOKIE["logphone"]."' , '$_POST[title]', '$_POST[auther]', '$_POST[content]', now(), '$address')";
+		$sql = "INSERT INTO `bbs` (`id`, `phone` , `title`, `nickname`, `content`, `time`, `address`) 
+		VALUES (NULL, '".$_COOKIE["logphone"]."' , '$_POST[title]', '".$_COOKIE["nickname"]."', '$_POST[content]', now(), '$address')";
 	
 	$s = $conn->query($sql);
 	if (!$s) echo "Faild";
