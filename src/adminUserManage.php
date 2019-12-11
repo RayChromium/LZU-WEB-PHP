@@ -140,9 +140,7 @@
 <!-- 调用js -->
 <!-- TODO：整一个用户管理 -->
 <p>
-	<a href="edit.php?id=<?php echo $re['id'] ?>" >Edit</a>|
-	<a href="javascript:do_del(<?php echo $re['id'] ?>)" >Delete</a></p>
-
+	<a href="javascript:do_User_del(<?php echo $re['phone'] ?>)" >Delete</a></p>
 <hr>
 
 <?php
