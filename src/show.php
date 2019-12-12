@@ -87,7 +87,7 @@
 				
 			</section>
 			
-			<input type="submit" value="Submit">
+			<input type="submit" value="Post">
 		</fieldset>
 	</form> 
 	<br>
