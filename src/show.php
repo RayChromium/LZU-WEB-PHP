@@ -24,6 +24,10 @@
 		{
 			$k = " `phone` = '".$_COOKIE['logphone']."'";
 		}
+		else if($_GET["filter"] == "all")
+		{
+			$k = "1";
+		}
 		//显示特定用户发布的内容
 		else
 		{
@@ -164,6 +168,7 @@
 	<p>
 		<a href="show.php?filter=self">My posts</a>		| 	 
 		<a href="show.php">Return to recommendations</a> 	| 	
+		<a href="show.php?filter=all">View All
 	</p>
 	
 <?php
@@ -194,28 +199,106 @@
 <?php
 	}
 
-	for($i=1; $i<=$pageTotal ; $i++){
+	if(isset($_GET["search"]))
+	{
+		//搜索状态下的分页跳转
+		for($i=1; $i<=$pageTotal ; $i++){
+				if($page==$i) echo "$i";
+				else echo "<a href='show.php?page=$i&search=$search'>$i</a>";
+				echo " ";
+		}
+	}else if(isset($_GET["filter"]))
+	{
+		//查看全部用户或者某特定用户（点击Nickname之后）的分页跳转
+		for($i=1; $i<=$pageTotal ; $i++){
 			if($page==$i) echo "$i";
-			else echo "<a href='show.php?page=$i&search=$search'>$i</a>";
+			else echo "<a href='show.php?page=$i&filter=".$_GET["filter"]."'>$i</a>";
 			echo " ";
+		}
+	}
+	//查看推荐的页面跳转
+	else
+	{
+		for($i=1; $i<=$pageTotal ; $i++){
+			if($page==$i) echo "$i";
+			else echo "<a href='show.php?page=$i";
+			echo " ";
+		}
 	}
 ?>
 
 
 <br>
-<a href="show.php?page=1&search=<?php echo $search?>">首页</a>
-<?php 
-	if($page!=1) {
+<!-- 搜索状态下的首尾上下页 -->
+<?php
+	if(isset($_GET["search"]))
+	{
 ?>
-	<a href="show.php?page=<?php echo $page-1?>&search=<?php echo $search?>">上一页</a>
-<?php 
-	}
-	if($page!=$pageTotal){
-?>
-<a href="show.php?page=<?php echo $page+1?>&search=<?php echo $search?>">下一页</a>
+		<a href="show.php?page=1&search=<?php echo $search?>">首页</a>
+		<?php 
+			if($page!=1) 
+			{
+		?>
+				<a href="show.php?page=<?php echo $page-1?>&filter=<?php echo $search?>">上一页</a>
+		<?php 
+			}
+			if($page!=$pageTotal)
+			{
+		?>
+				<a href="show.php?page=<?php echo $page+1?>&search=<?php echo $search?>">下一页</a>
+		<?php
+			}
+		?>
+		<a href="show.php?page=<?php echo $pageTotal?>&search=<?php echo $search?>">尾页</a>
 <?php
 	}
 ?>
-<a href="show.php?page=<?php echo $pageTotal?>&search=<?php echo $search?>">尾页</a>
 
-  
+<!-- 查看全部或特定用户post时的首尾上下页 -->
+<?php
+	if(isset($_GET["filter"]))
+	{
+?>
+		<a href="show.php?page=1&filter=<?php echo $_GET["filter"]?>">首页</a>
+		<?php 
+			if($page!=1) 
+			{
+		?>
+				<a href="show.php?page=<?php echo $page-1?>&filter=<?php echo $_GET["filter"]?>">上一页</a>
+		<?php 
+			}
+			if($page!=$pageTotal)
+			{
+		?>
+				<a href="show.php?page=<?php echo $page+1?>&filter=<?php echo $_GET["filter"]?>">下一页</a>
+		<?php
+			}
+		?>
+		<a href="show.php?page=<?php echo $pageTotal?>&filter=<?php echo $_GET["filter"]?>">尾页</a>
+<?php
+	}
+?>
+<!-- 最后就是默认状态下推荐的首尾上下页 -->
+<?php
+	if(!isset($_GET["filter"]) && !isset($_GET["search"]))
+	{
+?>
+<a href="show.php?page=1">首页</a>
+<?php 
+	if($page!=1) 
+	{
+?>
+		<a href="show.php?page=<?php echo $page-1?>">上一页</a>
+<?php 
+	}
+	if($page!=$pageTotal)
+	{
+?>
+		<a href="show.php?page=<?php echo $page+1?>">下一页</a>
+<?php
+	}
+?>
+<a href="show.php?page=<?php echo $pageTotal?>">尾页</a>
+<?php
+	}
+?>
