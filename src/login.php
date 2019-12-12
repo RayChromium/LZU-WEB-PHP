@@ -50,7 +50,9 @@
 					<label for="Password">Password:</label>
 					<input type="password" name="password">
 				</div>
+				
 				<div class="center">
+					<a href="signup1.php">Sign Up</a>
 					<input type="submit" value="Login">
 				</div>
 		</fieldset>
@@ -78,7 +80,7 @@
 			$result = $conn->query($sql);
 			//判断用户是否注册
 			$nums=$result->num_rows;
-			if ($nums==0) echo "This phone is't registered."."<br>";
+			if ($nums==0) echo "This phone isn't registered."."<br>";
 			else {
 				$checkpass = $result->fetch_array();
 				//degug
@@ -100,9 +102,9 @@
 					setcookie("isLoggedIn","1", time()+60*	60*24*7);
 					//是否为admin
 					if ($checkpass['admin']=="1") {
-						setcookie("nickname",'Admin',time()+60*60*24*7);
+						setcookie("nickname",'Admin '.$checkpass['nickname'],time()+60*60*24*7);
 						//header("Location:welcome.php");
-						header("Location:adminshow.php");
+						header("Location:adminShow.php");
 					}
 					else {
 						setcookie("nickname", $checkpass['nickname'],time()+60*60*24*7);

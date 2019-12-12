@@ -12,7 +12,7 @@
 		//debug
 		//var_dump($_COOKIE);
 		echo "<br>";
-		echo "Welcome ".$_COOKIE['nikename'];
+		echo "Welcome ".$_COOKIE['nickname'];
 	?>
 	<br>
 	<a href="login.php?action=logout">Logout</a>
