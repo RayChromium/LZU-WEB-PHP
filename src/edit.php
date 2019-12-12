@@ -51,12 +51,6 @@
 				<input type="hidden" name="id" value="<?php echo$id?>">
 				
 
-				<label>Auther</label>
-				<input type="text" name="auther"
-				value="<?php echo $re['auther']?>"
-				>
-				<br>
-
 				<label>Text Area</label>
 				<textarea type="text" name="content"><?php echo $re['content']?>
 				</textarea>
@@ -77,13 +71,15 @@
 
 	else if(!empty($_POST)){
 		
-		$sql = "update bbs
-		set title='$_POST[title]',content='$_POST[content]', auther='$_POST[auther]'
-		where id='$_POST[id]'";
+		$sql = "update `bbs` set title='$_POST[title]',content='$_POST[content]' where id='$_POST[id]'";
 		
 		// echo $sql;
 		$s = $conn->query($sql);
-		if (!$s) echo "Faild";
+		if (!$s)
+		{
+			echo "Faild"."<br>";
+			echo "Debug Message - SQL failure in ".$sql;
+		}
 		else {
 		//直接转到show。php
 		header("location:show.php");

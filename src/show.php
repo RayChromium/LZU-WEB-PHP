@@ -179,7 +179,7 @@
 <p>Content:  <?php echo $re['content']?></p>
 <!-- TODO: 如果查看的不是自己发布的内容就根本不显示Edit与Delete连接 -->
 <?php
-	if($re["phone"]==$_COOKIE["phone"])
+	if($re["phone"]==$_COOKIE["logphone"])
 	{
 ?>
 <!-- 调用js -->
