@@ -128,10 +128,20 @@
 
 <p>
     <!-- 返回帖子管理页面 -->
-	<a href="adminShow.php">Return to post manage page</a></p>
+	<a href="adminShow.php">Manage Posts</a>
+	<!-- 如果正在搜索状态，添加一个返回查看全部用户的超链接 -->
+	<?php
+		if(isset($_GET["search"]))
+		{
+	?>
+			|<a href="adminUserManage.php">View All Users</a>
+	<?php
+		}
+	?>
+</p>
 
 <?php
-	echo "Debug mesage: ".$sql;
+	// echo "Debug mesage: ".$sql;
 	while ($re = $s->fetch_array()) {
 		
 ?>
@@ -155,7 +165,15 @@
 <!-- TODO：整一个用户管理 -->
 <!-- TODO: add admin功能，将特定用户的`admin`字段变为1  -->
 <p>
-	<a href="javascript:do_User_del(<?php echo $re['phone'] ?>)" >Delete</a>
+	<!-- admin不能删除自己的账号或者将自己移出admin组 -->
+	<?php
+		if($re["phone"] != $_COOKIE["logphone"])
+		{
+	?>
+			<a href="javascript:do_User_del(<?php echo $re['phone'] ?>)" >Delete</a>
+	<?php
+		}
+	?>
 	<?php
 		if($re['admin'] == 0)
 		{
@@ -163,7 +181,7 @@
 			<a href="javascript:add_admin(<?php echo $re['phone'] ?>)">Add admin</a>
 	<?php
 		}
-		else
+		else if($re['phone'] != $_COOKIE["logphone"])
 		{
 	?>
 			<a href="javascript:remove_admin(<?php echo $re['phone'] ?>)">Remove admin</a>
@@ -175,29 +193,67 @@
 
 <?php
 	}
-
-	for($i=1; $i<=$pageTotal ; $i++){
+	//搜索状态下的分页跳转
+	if(isset($_GET["search"]))
+	{
+		for($i=1; $i<=$pageTotal ; $i++){
+				if($page==$i) echo "$i";
+				else echo "<a href='adminUserManage.php?page=$i&search=$search'>$i</a>";
+				echo " ";
+		}
+	}
+	//查看所有用户的分页跳转
+	else{
+		for($i=1; $i<=$pageTotal ; $i++){
 			if($page==$i) echo "$i";
-			else echo "<a href='adminUserManage.php?page=$i&search=$search'>$i</a>";
+			else echo "<a href='adminUserManage.php?page=$i'>$i</a>";
 			echo " ";
+		}
 	}
 ?>
 
 
 <br>
-<a href="adminUserManage.php?page=1&search=<?php echo $search?>">首页</a>
-<?php 
-	if($page!=1) {
+<?php
+	if(isset($_GET["search"]))
+	{
 ?>
-	<a href="adminUserManage.php?page=<?php echo $page-1?>&search=<?php echo $search?>">上一页</a>
-<?php 
-	}
-	if($page!=$pageTotal){
-?>
-<a href="adminUserManage.php?page=<?php echo $page+1?>&search=<?php echo $search?>">下一页</a>
+		<a href="adminUserManage.php?page=1&search=<?php echo $search?>">首页</a>
+		<?php 
+			if($page!=1) {
+		?>
+			<a href="adminUserManage.php?page=<?php echo $page-1?>&search=<?php echo $search?>">上一页</a>
+		<?php 
+			}
+			if($page!=$pageTotal){
+		?>
+		<a href="adminUserManage.php?page=<?php echo $page+1?>&search=<?php echo $search?>">下一页</a>
+		<?php
+			}
+		?>
+		<a href="adminUserManage.php?page=<?php echo $pageTotal?>&search=<?php echo $search?>">尾页</a>
 <?php
 	}
 ?>
-<a href="adminUserManage.php?page=<?php echo $pageTotal?>&search=<?php echo $search?>">尾页</a>
 
-  
+<?php
+	if(!isset($_GET["search"]))
+	{
+?>
+		<a href="adminUserManage.php?page=1">首页</a>
+		<?php 
+			if($page!=1) {
+		?>
+			<a href="adminUserManage.php?page=<?php echo $page-1?>">上一页</a>
+		<?php 
+			}
+			if($page!=$pageTotal){
+		?>
+		<a href="adminUserManage.php?page=<?php echo $page+1?>">下一页</a>
+		<?php
+			}
+		?>
+		<a href="adminUserManage.php?page=<?php echo $pageTotal?>">尾页</a>
+<?php
+	}
+?>
