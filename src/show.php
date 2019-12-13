@@ -167,7 +167,14 @@
 
 	<p>
 		<a href="show.php?filter=self">My posts</a>		| 	 
+		<?php
+			if(isset($_GET["search"]) || isset($_GET["filter"]))
+			{
+		?>
 		<a href="show.php">Return to recommendations</a> 	| 	
+		<?php
+			}
+		?>
 		<a href="show.php?filter=all">View All
 	</p>
 	
