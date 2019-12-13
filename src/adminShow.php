@@ -144,7 +144,7 @@
 	// echo "<br>Debug message:".$s ->fetch_array();
 
 ?>
-
+<h2>Post Management Page</h2>
 <p> 
     <a href="adminUserManage.php">Manage Users</a>			
 
@@ -152,7 +152,7 @@
 		if(isset($_GET["search"]) || isset($_GET["filter"]))
 		{
 			?>
-				|	<a href="adminShow.php">View All</a>
+				|	<a href="adminShow.php">View All Posts</a>
 			<?php
 		}
 	?>

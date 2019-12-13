@@ -125,7 +125,7 @@
 	// echo "<br>Debug message:".$s ->fetch_array();
 
 ?>
-
+<h2> User Management Page</h2>
 <p>
     <!-- 返回帖子管理页面 -->
 	<a href="adminShow.php">Manage Posts</a>
