@@ -221,7 +221,7 @@
 	{
 		for($i=1; $i<=$pageTotal ; $i++){
 			if($page==$i) echo "$i";
-			else echo "<a href='show.php?page=$i";
+			else echo "<a href='show.php?page=$i'>".$i."</a>";
 			echo " ";
 		}
 	}

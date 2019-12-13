@@ -87,33 +87,8 @@
 </head>
 <body bgcolor="lavender">
 <div id="survey">	
-	<form method="post" action="recive.php">
-		
-			<fieldset>
-			<section>
-				<legend>Message</legend>
-
-				<label>Titile</label>
-				<input type="text" name="title">
-				<br>
-
-				<label>Auther</label>
-				<input type="text" name="auther">
-				<br>
-
-				<label>Text Area</label>
-				<textarea type="text" name="content"></textarea>
-				<br>
-
-				
-			</section>
-			
-			<input type="submit" value="Submit">
-		</fieldset>
-	</form> 
-	<br>
 	<!-- search部分 -->
-	<form method="get" action="adminadminShow.php">
+	<form method="get" action="adminShow.php">
 		<fieldset>
 			
 				<label>Search</label>
@@ -171,9 +146,17 @@
 ?>
 
 <p>
-	<a href="adminadminShow.php?filter=self">My posts</a>		| 	 
-    <a href="adminadminShow.php">Return to recommendations</a> 	| 	
-    <a href="adminUserManage.php">Manage Users</a>
+	<a href="adminShow.php?filter=self">My posts</a>		| 	 
+    <a href="adminUserManage.php">Manage Users</a>			
+
+	<?php
+		if(isset($_GET["search"]) || isset($_GET["filter"]))
+		{
+			?>
+				|	<a href="adminShow.php">View All</a>
+			<?php
+		}
+	?>
 </p>
 
 <?php
@@ -183,7 +166,7 @@
 ?>
 <h3>Tittle:<?php echo $re['title']?></h3>
 <!-- 在Author上添加超链接，用GET传递这个人的phone进行筛选 -->
-<p>Nickname:  <a href = "show.php?filter=<?php echo $re["phone"] ?>"><?php echo $re['nickname']?></a> | Publish time:<?php echo $re['time']?> | IP:<?php echo $re['address']?></p>
+<p>Nickname:  <a href = "adminShow.php?filter=<?php echo $re["phone"] ?>"><?php echo $re['nickname']?></a> | Publish time:<?php echo $re['time']?> | IP:<?php echo $re['address']?></p>
 <p>Content:  <?php echo $re['content']?></p>
 
 
@@ -210,28 +193,108 @@
 <?php
 	}
 
-	for($i=1; $i<=$pageTotal ; $i++){
+	//搜索状态下的分页跳转
+	if(isset($_GET["search"]))
+	{
+		for($i=1; $i<=$pageTotal ; $i++){
+				if($page==$i) echo "$i";
+				else echo "<a href='adminShow.php?page=$i&search=$search'>$i</a>";
+				echo " ";
+		}
+	}
+	else if(isset($_GET["filter"]))
+	{
+		// 查看某特定用户（点击Nickname之后）的分页跳转
+		for($i=1; $i<=$pageTotal ; $i++){
 			if($page==$i) echo "$i";
-			else echo "<a href='adminadminShow.php?page=$i&search=$search'>$i</a>";
+			else echo "<a href='adminShow.php?page=$i&filter=".$_GET["filter"]."'>$i</a>";
 			echo " ";
+		}
+	}
+	// 查看全部Posts的页面跳转
+	else
+	{
+		for($i=1; $i<=$pageTotal ; $i++){
+			if($page==$i) echo "$i";
+			else echo "<a href='adminShow.php?page=$i'>$i</a>";
+			echo " ";
+		}
 	}
 ?>
 
 
 <br>
-<a href="adminadminShow.php?page=1&search=<?php echo $search?>">首页</a>
-<?php 
-	if($page!=1) {
+<!-- 搜索状态下的首尾上下页 -->
+<?php
+	if(isset($_GET["search"]))
+	{
 ?>
-	<a href="adminadminShow.php?page=<?php echo $page-1?>&search=<?php echo $search?>">上一页</a>
-<?php 
-	}
-	if($page!=$pageTotal){
-?>
-<a href="adminadminShow.php?page=<?php echo $page+1?>&search=<?php echo $search?>">下一页</a>
+		<a href="adminShow.php?page=1&search=<?php echo $search?>">首页</a>
+		<?php 
+			if($page!=1) 
+			{
+		?>
+				<a href="adminShow.php?page=<?php echo $page-1?>&filter=<?php echo $search?>">上一页</a>
+		<?php 
+			}
+			if($page!=$pageTotal)
+			{
+		?>
+				<a href="adminShow.php?page=<?php echo $page+1?>&search=<?php echo $search?>">下一页</a>
+		<?php
+			}
+		?>
+		<a href="adminShow.php?page=<?php echo $pageTotal?>&search=<?php echo $search?>">尾页</a>
 <?php
 	}
 ?>
-<a href="adminadminShow.php?page=<?php echo $pageTotal?>&search=<?php echo $search?>">尾页</a>
 
-  
+<!-- 查看某特定用户post时的首尾上下页 -->
+<?php
+	if(isset($_GET["filter"]))
+	{
+?>
+		<a href="adminShow.php?page=1&filter=<?php echo $_GET["filter"]?>">首页</a>
+		<?php 
+			if($page!=1) 
+			{
+		?>
+				<a href="adminShow.php?page=<?php echo $page-1?>&filter=<?php echo $_GET["filter"]?>">上一页</a>
+		<?php 
+			}
+			if($page!=$pageTotal)
+			{
+		?>
+				<a href="adminShow.php?page=<?php echo $page+1?>&filter=<?php echo $_GET["filter"]?>">下一页</a>
+		<?php
+			}
+		?>
+		<a href="adminShow.php?page=<?php echo $pageTotal?>&filter=<?php echo $_GET["filter"]?>">尾页</a>
+<?php
+	}
+?>
+
+<!-- 查看所有Post状态下推荐的首尾上下页 -->
+<?php
+	if(!isset($_GET["filter"]) && !isset($_GET["search"]))
+	{
+?>
+	<a href="adminShow.php?page=1">首页</a>
+	<?php 
+		if($page!=1) 
+		{
+	?>
+			<a href="adminShow.php?page=<?php echo $page-1?>">上一页</a>
+	<?php 
+		}
+		if($page!=$pageTotal)
+		{
+	?>
+			<a href="adminShow.php?page=<?php echo $page+1?>">下一页</a>
+	<?php
+		}
+	?>
+	<a href="adminShow.php?page=<?php echo $pageTotal?>">尾页</a>
+<?php
+	}
+?>
