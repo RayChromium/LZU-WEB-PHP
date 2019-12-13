@@ -145,8 +145,7 @@
 
 ?>
 
-<p>
-	<a href="adminShow.php?filter=self">My posts</a>		| 	 
+<p> 
     <a href="adminUserManage.php">Manage Users</a>			
 
 	<?php
