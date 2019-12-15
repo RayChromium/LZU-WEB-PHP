@@ -246,7 +246,7 @@
 			if($page!=1) 
 			{
 		?>
-				<a href="show.php?page=<?php echo $page-1?>&filter=<?php echo $search?>">上一页</a>
+				<a href="show.php?page=<?php echo $page-1?>&search=<?php echo $search?>">上一页</a>
 		<?php 
 			}
 			if($page!=$pageTotal)
