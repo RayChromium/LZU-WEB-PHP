@@ -1,4 +1,3 @@
-
 <?php
 
     // 显示所有的用户：
@@ -24,35 +23,28 @@
 <html>
 <meta charset="utf-8">
 <script type="text/javascript">
-	function do_del(id) {
-		var is=window.confirm("Confirm delete");
-		if(is){
-			// 重新定向
-			window.location.href="del.php?id="+id;
-		}
-	}
-    function do_User_del(phone)
+    function do_User_del(paraString)
     {
         var is=window.confirm("Delete this guy?");
         if(is)
         {
-            window.location.href="userDel.php?phone="+phone;
+            window.location.href="userDel.php?phone="+paraString;
         }
     }
-	function add_admin(phone)
+	function add_admin(paraString)
     {
         var is=window.confirm("Add this user to the manager group?");
         if(is)
         {
-            window.location.href="addAdmin.php?phone="+phone;
+            window.location.href="addAdmin.php?phone="+paraString;
         }
     }
-	function remove_admin(phone)
+	function remove_admin(paraString)
     {
         var is=window.confirm("Remove this user from the manager group?");
         if(is)
         {
-            window.location.href="removeAdmin.php?phone="+phone;
+            window.location.href="removeAdmin.php?phone="+paraString;
         }
     }
 
@@ -109,6 +101,14 @@
 	}
 	if($page>$pageTotal) $page = $pageTotal;	//下一页尾页限制
 
+	//存储URL，用于某些操作后返回原页面
+	$url = $_SERVER["REQUEST_URI"];
+	// $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+	// $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	$url = str_replace("/WEB_SHIT/src/","",$url);
+	// $url = str_replace("&","\&",$url);
+	echo "Debug Message - Current URL : ".$url."<br>";
+	
 
 	$rStart = ($page-1)*$pageNumber;
 	
@@ -170,7 +170,7 @@
 		if($re["phone"] != $_COOKIE["logphone"])
 		{
 	?>
-			<a href="javascript:do_User_del(<?php echo $re['phone'] ?>)" >Delete</a>
+			<a href="javascript:do_User_del('<?php echo $re['phone']."\&returnUrl="."$url" ?>')" >Delete</a>
 	<?php
 		}
 	?>
@@ -178,13 +178,13 @@
 		if($re['admin'] == 0)
 		{
 	?>
-			<a href="javascript:add_admin(<?php echo $re['phone'] ?>)">Add admin</a>
+			<a href="javascript:add_admin('<?php echo $re['phone']."\&returnUrl="."$url" ?>')">Add admin</a>
 	<?php
 		}
 		else if($re['phone'] != $_COOKIE["logphone"])
 		{
 	?>
-			<a href="javascript:remove_admin(<?php echo $re['phone'] ?>)">Remove admin</a>
+			<a href="javascript:remove_admin('<?php echo $re['phone']."\&returnUrl="."$url" ?>')">Remove admin</a>
 	<?php
 		}
 	?>

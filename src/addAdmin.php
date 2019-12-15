@@ -13,7 +13,8 @@
 	if (!$s) echo "Faild";
 	else {
 		//直接回到adminUserManage.php
-		header("location:adminUserManage.php");
+		header("location:".$_GET["returnUrl"]);
+		// echo "Debug message - Header return parameter : "."location:".$_GET["returnUrl"];
 		}
 
 	}
