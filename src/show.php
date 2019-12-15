@@ -149,6 +149,12 @@
 	}
 	if($page>$pageTotal) $page = $pageTotal;	//下一页尾页限制
 
+	//存储URL，用于Edit后返回原页面
+	$url = $_SERVER["REQUEST_URI"];
+	$url = str_replace("/WEB_SHIT/src/","",$url);
+	//必须将url中可能包含的&做处理:
+	$url = str_replace("&","!",$url);
+
 
 	$rStart = ($page-1)*$pageNumber;
 	
@@ -196,7 +202,8 @@
 ?>
 <!-- 调用js -->
 <p>
-	<a href="edit.php?id=<?php echo $re['id'] ?>" >Edit</a>|
+	<!-- edit这个url参数不应该用GET方式传…… -->
+	<a href="edit.php?id=<?php echo $re['id']."&returnUrl={".$url."}" ?>" >Edit</a>|
 	<a href="javascript:do_del(<?php echo $re['id'] ?>)" >Delete</a></p>
 <?php
 	}

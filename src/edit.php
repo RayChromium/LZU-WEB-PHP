@@ -3,7 +3,8 @@
 	include "conn.php";//connect to db
 	if (!empty($_GET)) { 
 		$id = $_GET['id'];
-
+		$returnUrl = $_GET['returnUrl'];
+		// echo "Debug Message - Return URL from Get : ".$returnUrl."<br>";
 
 		$sql = "select * from bbs where id='$id'";
 	
@@ -49,6 +50,7 @@
 				<br>
 
 				<input type="hidden" name="id" value="<?php echo$id?>">
+				<input type="hidden" name="returnUrl" value="<?php echo $returnUrl?>">
 				
 
 				<label>Text Area</label>
@@ -80,9 +82,15 @@
 			echo "Faild"."<br>";
 			echo "Debug Message - SQL failure in ".$sql;
 		}
-		else {
-		//直接转到show。php
-		header("location:show.php");
+		else 
+		{
+			$returnUrl = $_POST["returnUrl"];
+			//Post传过来的的url去除{}和'&'的处理
+			$returnUrl = str_replace("{","",$returnUrl);
+			$returnUrl = str_replace("}","",$returnUrl);
+			$returnUrl = str_replace("!","&",$returnUrl);
+			// echo "Debug Message - Return URL : ".$returnUrl."<br>";
+			header("location:".$returnUrl);
 		}
 
 	}
