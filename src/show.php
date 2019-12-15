@@ -175,7 +175,7 @@
 		<?php
 			}
 		?>
-		<a href="show.php?filter=all">View All
+		<a href="show.php?filter=all">View All</a>
 	</p>
 	
 <?php

@@ -13,7 +13,7 @@
 	if (!$s) echo "Faild";
 	else {
 		//直接回到adminShow.php
-		header("location:adminShow.php");
+		header("location:".$_GET["returnUrl"]);
 		}
 
 	}

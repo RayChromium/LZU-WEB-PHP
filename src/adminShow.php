@@ -41,28 +41,28 @@
 <html>
 <meta charset="utf-8">
 <script type="text/javascript">
-	function do_del(id) {
+	function do_del(paraString) {
 		var is=window.confirm("Confirm delete");
 		if(is){
 			// 重新定向
-			window.location.href="del.php?id="+id;
+			window.location.href="del.php?id="+paraString;
 		}
 
 	}
-	function add_Recommend(id)
+	function add_Recommend(paraString)
     {
         var is=window.confirm("Add this post to recommended list?");
         if(is)
         {
-            window.location.href="addRecommend.php?id="+id;
+            window.location.href="addRecommend.php?id="+paraString;
         }
     }
-	function remove_Recommend(id)
+	function remove_Recommend(paraString)
     {
         var is=window.confirm("Remove this post from the recommended list?");
         if(is)
         {
-            window.location.href="removeRecommend.php?phone="+phone;
+            window.location.href="removeRecommend.php?id="+paraString;
         }
     }
 
@@ -128,6 +128,12 @@
 	}
 	if($page>$pageTotal) $page = $pageTotal;	//下一页尾页限制
 
+	//存储URL，用于某些操作后返回原页面
+	$url = $_SERVER["REQUEST_URI"];
+	$url = str_replace("/WEB_SHIT/src/","",$url);
+	echo "Debug Message - Current URL : ".$url."<br>";
+
+
 
 	$rStart = ($page-1)*$pageNumber;
 	
@@ -176,13 +182,13 @@
 		if($re['isRec'] == 0)
 		{
 	?>
-			<a href="javascript:add_Recommend(<?php echo $re['id'] ?>)">Add recommend</a>
+			<a href="javascript:add_Recommend('<?php echo $re['id']."\&returnUrl="."$url" ?>')">Add recommend</a>
 	<?php
 		}
 		else
 		{
 	?>
-			<a href="javascript:remove_Recommend(<?php echo $re['id'] ?>)">Remove recommend</a>
+			<a href="javascript:remove_Recommend('<?php echo $re['id']."\&returnUrl="."$url" ?>')">Remove recommend</a>
 	<?php
 		}
 	?>
