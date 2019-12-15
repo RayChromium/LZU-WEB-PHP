@@ -10,9 +10,10 @@
 	//是否搜索
 	//search
 	$search = "";
-	if(!empty($_GET['search'])) {
+	if(isset($_GET['search'])) {
 
 		$search = $_GET['search'];
+		//看看这个是不是空串
 		$k = "`title` like '%$search%'";
 		//$sql = "select * from `bbs` where `title` like '%$search%'";
 	}
@@ -137,6 +138,7 @@
 	//求记录总数
 	
 	$sql = "select * from `bbs` where $k"; //search and nono search total record
+	echo "Debug message - Cuurent SQL : ".$sql."<br>";
 	$s = $conn->query($sql);
 	$recordTotal = $s->num_rows;
 	$pageTotal = ceil($recordTotal/$pageNumber); //总页数，向上取整
