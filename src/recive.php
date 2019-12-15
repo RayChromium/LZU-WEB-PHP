@@ -14,7 +14,7 @@
 	if (!$s) echo "Faild";
 	else {
 		//直接转到show。php
-		header("location:show.php");
+		header("location:show.php?filter=self");
 		// echo "Success insert";
 		// echo '<a href="show.php">"Check DB"</a>';
 
