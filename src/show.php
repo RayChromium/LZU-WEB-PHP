@@ -156,7 +156,7 @@
 	$url = str_replace("/WEB_SHIT/src/","",$url);
 	//必须将url中可能包含的&做处理:
 	$url = str_replace("&","!",$url);
-
+	echo "Debug Message - loc COOKIE : ".$_COOKIE["IPinfo"];
 
 	$rStart = ($page-1)*$pageNumber;
 	
@@ -174,7 +174,14 @@
 ?>
 
 	<p>
+		<?php
+			if (!isset($_GET["filter"]) || isset($_GET["filter"]) && $_GET["filter"] != "self")
+			{
+		?>
 		<a href="show.php?filter=self">My posts</a>		| 	 
+		<?php
+			}
+		?>
 		<?php
 			if(isset($_GET["search"]) || isset($_GET["filter"]))
 			{
