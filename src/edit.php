@@ -54,8 +54,7 @@
 				
 
 				<label>Text Area</label>
-				<textarea type="text" name="content"><?php echo $re['content']?>
-				</textarea>
+				<textarea type="text" name="content"><?php echo $re['content']?></textarea>
 				<br>
 
 				

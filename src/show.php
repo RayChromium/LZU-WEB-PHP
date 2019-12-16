@@ -156,7 +156,7 @@
 	$url = str_replace("/WEB_SHIT/src/","",$url);
 	//必须将url中可能包含的&做处理:
 	$url = str_replace("&","!",$url);
-	echo "Debug Message - loc COOKIE : ".$_COOKIE["IPinfo"];
+
 
 	$rStart = ($page-1)*$pageNumber;
 	
@@ -174,7 +174,7 @@
 ?>
 
 	<p>
-		<?php
+	<?php
 			if (!isset($_GET["filter"]) || isset($_GET["filter"]) && $_GET["filter"] != "self")
 			{
 		?>
@@ -186,7 +186,7 @@
 			if(isset($_GET["search"]) || isset($_GET["filter"]))
 			{
 		?>
-		<a href="show.php">Return to recommendations</a> 	| 	
+		<a href="show.php">Recommendations</a> 	| 	
 		<?php
 			}
 		?>
@@ -202,7 +202,7 @@
 ?>
 <h3>Tittle:<?php echo $re['title']?></h3>
 <!-- 在Author上添加超链接，用GET传递这个人的phone进行筛选 -->
-<p>Nickname:  <a href = "show.php?filter=<?php echo $re["phone"] ?>"><?php echo $re['nickname']?></a> | Publish time:<?php echo $re['time']?> | IP:<?php echo $re['address']?></p>
+<p>Nickname:  <a href = "show.php?filter=<?php echo $re["phone"] ?>"><?php echo $re['nickname']?></a> | Publish time:<?php echo $re['time']?> | Location:<?php echo $re['address']?></p>
 <p>Content:  <?php echo $re['content']?></p>
 <!-- TODO: 如果查看的不是自己发布的内容就根本不显示Edit与Delete连接 -->
 <?php
@@ -212,7 +212,7 @@
 <!-- 调用js -->
 <p>
 	<!-- edit这个url参数不应该用GET方式传…… -->
-	<a href="edit.php?id=<?php echo $re['id']."&returnUrl={".$url."}" ?>" >Edit</a>|
+	<a href="edit.php?id=<?php echo $re['id']."&returnUrl={".$url."}" ?>" >Edit</a> |
 	<a href="javascript:do_del(<?php echo $re['id'] ?>)" >Delete</a></p>
 <?php
 	}

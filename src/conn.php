@@ -1,7 +1,5 @@
 <?php
 
-
-
 $conn = @new mysqli('localhost','root','','mydb');
 
 if ($conn->connect_errno!=0) {

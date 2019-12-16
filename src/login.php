@@ -58,6 +58,7 @@
 		</fieldset>
 	</form>
 </div>
+<p>Copyright © Xinyu Zhang, Rui cai. All rights reserved.</p>
 </body>
 </html>
 

@@ -117,7 +117,7 @@
 
 <?php
 	include "conn.php";
-	if(isset($_COOKIE)) print_r($_COOKIE);
+	//if(isset($_COOKIE)) print_r($_COOKIE);
 	echo "<br>";
 	
 	if(!empty($_GET["action"])){
@@ -205,14 +205,14 @@
     			    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
     			}
 				//执行api调用，并获取返回结果
-    			// $result = curl_exec($curl);
-    			// //debug
-    			// //var_dump($result);
-    			// //判断是否成功发送
-    			// if (checkstr($result)) {
-    			// 	echo "SMS code successfully sent.";
-    			// }
-    			// else echo "Wrong phone number! Please try again.";
+    			$result = curl_exec($curl);
+    			//debug
+    			//var_dump($result);
+    			//判断是否成功发送
+    			if (checkstr($result)) {
+    				echo "SMS code successfully sent.";
+    			}
+    			else echo "Wrong phone number! Please try again.";
 
     		}
 			//
