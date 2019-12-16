@@ -170,7 +170,7 @@
 		if($re["phone"] != $_COOKIE["logphone"])
 		{
 	?>
-			<a href="javascript:do_User_del('<?php echo $re['phone']."\&returnUrl="."$url" ?>')" >Delete</a>
+			<a href="javascript:do_User_del('<?php echo $re['phone']."\&returnUrl="."$url" ?>')" >Delete</a>	
 	<?php
 		}
 	?>
@@ -178,13 +178,13 @@
 		if($re['admin'] == 0)
 		{
 	?>
-			<a href="javascript:add_admin('<?php echo $re['phone']."\&returnUrl="."$url" ?>')">Add admin</a>
+			|	<a href="javascript:add_admin('<?php echo $re['phone']."\&returnUrl="."$url" ?>')">Add admin</a>
 	<?php
 		}
 		else if($re['phone'] != $_COOKIE["logphone"])
 		{
 	?>
-			<a href="javascript:remove_admin('<?php echo $re['phone']."\&returnUrl="."$url" ?>')">Remove admin</a>
+			|	<a href="javascript:remove_admin('<?php echo $re['phone']."\&returnUrl="."$url" ?>')">Remove admin</a>
 	<?php
 		}
 	?>
