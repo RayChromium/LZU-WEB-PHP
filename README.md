@@ -19,3 +19,23 @@
   - [x] 微博管理：系统管理员能够浏览、删除微博、设置推荐微博
 
 ### 安装
+
+### 开发
+#### 开发环境及工具
+- `Windows 7`
+- `Xampp v7.13.2`
+- `Visual Studio Code` with Plugins：
+  - [`GITLENS`](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+  - [`PHP Intelephense`](https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client)
+  - [`Markdown All in One`](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
+  - [`Markdown Preview Github Styling`](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles)
+  
+#### 项目及功能描述
+
+##### 亮点
+1. **注册页面向手机发送SMS code**
+2. 普通用户/管理员进行了对内容或用户的编辑操作后返回原页面
+3. **通过获取登录用户的IP地址查询其真实地址（待完善）**
+
+#### 迭代过程
+详情见[*commit log*](https://github.com/RayChromium/LZU-WEB-PHP/commits/master)
