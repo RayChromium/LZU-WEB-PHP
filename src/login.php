@@ -65,6 +65,7 @@
 	function clearCookie(){
 		setcookie( 'logphone', '', time()-3600);
 		setcookie("isLoggedIn", '', time()-3600);
+		setcookie('IPinfo', '', time()-3600);
 		//setcookie('visit','',time()-3600);
 		//setcookie('lasttime','',time()-3600);
 	}
