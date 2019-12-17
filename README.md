@@ -26,6 +26,32 @@
 2. 将本仓库内容`clone`到此目录下： `git clone https://github.com/RayChromium/LZU-WEB-PHP.git` 。(p.s. 如果没有安装`Git`，也可以点击右上方绿色的`clone or download`,选择下载`.zip`压缩包解压后放入`htdocs`)
 3. 开启`XAMPP`，启用`Apache`与`MySQL`
 4. 打开浏览器，在地址栏输入`localhost/LZU-WEB-PHP/src/login`即可使用
+5. (可选)本仓库的目录结构如下：  
+   > LZU-WEB-PHP  
+ ├── LICENCE  
+ ├── LICENCE_CN  
+ ├── README.md  
+ ├── import  
+ │    └── mydb.sql  
+ └── src  
+     ├── addAdmin.php  
+     ├── addRecommend.php  
+     ├── adminShow.php  
+     ├── adminUserManage.php  
+     ├── conn.php  
+     ├── del.php  
+     ├── edit.php  
+     ├── login.php  
+     ├── recive.php  
+     ├── removeAdmin.php  
+     ├── removeRecommend.php  
+     ├── show.php  
+     ├── signup1.php  
+     ├── userDel.php  
+     └── welcome.php  
+   2 directories, 19 files  
+ 
+   如果需要导入仓库原有的数据，可以在`localhost/phpmyadmin`中创建数据库`mydb`并使用本仓库中的`/import/mydb.sql`
 ### 开发过程
 #### 开发环境及工具
 - `Windows 7`
