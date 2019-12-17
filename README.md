@@ -1,6 +1,6 @@
 # WEB数据库期末大作业
 #### 2017计算机一班蔡睿、2017计算机二班张心宇
-##### 2019-2020秋季学期 WEB数据库技术 课程号：2043183 课序号：2043183
+##### 2019-2020秋季学期 WEB数据库技术 课程号：2043183 课序号：1
 [![XAMPP](https://img.shields.io/badge/XAMPP-v7.3.12-brightgreen)](https://www.apachefriends.org/index.html)  [![Anti-996](https://img.shields.io/badge/LICENCE-ANTI--996-blue)](https://github.com/RayChromium/LZU-WEB-PHP/blob/master/LICENCE)
 ### 作业要求
 - 用户功能模块
@@ -19,8 +19,14 @@
   - [x] 微博管理：系统管理员能够浏览、删除微博、设置推荐微博
 
 ### 安装
-
-### 开发
+#### 安装到自己的机器上进行测试的方法：
+**由于本项目使用[![XAMPP](https://img.shields.io/badge/XAMPP-v7.3.12-brightgreen)](https://www.apachefriends.org/index.html)进行运行测试，建议安装`XAMPP`后使用。以下安装步骤默认用户已安装`XAMPP`与`Git`**
+  
+1. 进入`XAMPP`安装目录下的`htdocs`文件夹： `cd $(InstallDirectory)/xampp/htdocs`
+2. 将本仓库内容`clone`到此目录下： `git clone https://github.com/RayChromium/LZU-WEB-PHP.git` 。(p.s. 如果没有安装`Git`，也可以点击右上方绿色的`clone or download`,选择下载`.zip`压缩包解压后放入`htdocs`)
+3. 开启`XAMPP`，启用`Apache`与`MySQL`
+4. 打开浏览器，在地址栏输入`localhost/LZU-WEB-PHP/src/login`即可使用
+### 开发过程
 #### 开发环境及工具
 - `Windows 7`
 - `Xampp v7.13.2`
@@ -35,7 +41,7 @@
 ##### 亮点
 1. **注册页面向手机发送SMS code**
 2. 普通用户/管理员进行了对内容或用户的编辑操作后返回原页面
-3. **通过获取登录用户的IP地址查询其真实地址（待完善）**
+3. **通过获取登录用户的IP地址查询其真实地址**
 
 #### 迭代过程
-详情见[*commit log*](https://github.com/RayChromium/LZU-WEB-PHP/commits/master)
+详情见[*commit log*](https://github.com/RayChromium/LZU-WEB-PHP/commits/Presentation)
