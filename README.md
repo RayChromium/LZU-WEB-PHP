@@ -124,10 +124,83 @@
 详情见[*commit logs*](https://github.com/RayChromium/LZU-WEB-PHP/commits/Presentation)
   
 ## 项目及功能描述
-
 ### 使用指南
+#### 账号注册
+1. 进入[微博服务器登陆页面](http://bbs.zxy.ac.cn/bbs/login.php)
+2. 点击Sign Up链接，进入注册页面
+   ![](images/SignUp1.png)
+3.	进入注册页面后，首先填写真实手机号，目前仅支持中国大陆11位手机号，最多输入11位。点击sent按钮发送短信验证码。（发验证码会收费，仅供测试）
+  ![](images/SignUp2.png)
+  如果输入的手机号不正确会提示发送失败
+  ![](images/SignUp3.png)
+  如果输入的手机号正确会提示发送成功
+4.	输入向手机发送的验证码，填入SMS code中，并填写下列的表单:
+  ![](images/SignUp4.png)
+  ![](images/SignUp5.png)
+  如果输入的验证码不正确会提示错误:
+  ![](images/SignUp8.png)
+  如果输入的验证码正确，但已经数据可有该手机号，会提示手机号已注册:
+  ![](images/SignUp6.png)
+  如果输入的验证码、表单输入正确，且手机号未注册，会完成注册。点击Back to login返回登陆界面:
+  ![](images/SignUp7.png)
+  
+#### 用户登陆
+1. 无论管理员还是普通用户，输入手机号，密码完成登陆
+  ![](images/Login1.png)
+  如果输入的手机号在数据库中不存在，会提示该手机号未注册:
+  ![](images/Login2.png)
+  如果输入的手机号和密码与数据库不符，会提示密码错误:
+  ![](images/Login3.png)
+2. 手机号与密码正确会完成跳转，管理员会跳转到adminShow.php，普通用户会跳转到show.php:
+   ![](images/Login4.png)
+3. 退出登陆
+   ![](images/Login5.png)
+  
+#### 管理员微博管理
+1. 页面介绍：
+  ![](images/Manage_Post1.png)
+2. 微博内容介绍
+  ![](images/Manage_Post2.png)
+3. 设置推荐
+   ![](images/Manage_Post3.png)
+4. 取消推荐 
+   ![](images/Manage_Post4.png)
 
+#### 管理员用户管理
+1.	切换管理用户的界面，点击`Manage Users`切换管理用户界面:
+  ![](images/ManageUsers1.png)
+2. 界面介绍:
+   ![](images/ManageUsers2.png)
+3. 删除用户，点击delete删除用户及其所谓发布的微博，点击点击弹窗中的OK确定删除:
+   ![](images/ManageUsers3.png)
+4.	设置、取消管理员。点击Add/Remove admin并点击确定设置取消管理员:
+  ![](images/ManageUsers4.png)
 
+#### 微博发布
+1.	推荐微博。普通用户刚登陆后默认显示推荐微博，如果是自己发布的微博可以编辑删除:
+  ![](images/Posting1.png)
+2. 微博发布。输入标题和微博内容后，点击post可以发布新的微博。微博发布后自动返回，查看自己发布的所有微博:
+   ![](images/Posting2.png)
+  
+#### 微博查看
+1.	推荐微博查看。登陆后默认显示推荐微博，在其他页面时点击Recommendations查看推荐微博:
+    ![](images/Browsing1.png)
+2.	查看自己发布的所有微博。在页面点击My posts查看自己发布的所有微博:
+    ![](images/Browsing2.png)
+3.	查看所有用户微博。在页面点击View all查看所有用户的微博:
+    ![](images/Browsing3.png)
+4.	查看特定用户的微博。在查看微博的页面点击任意用户的昵称，查看那个用户发的微博:
+    ![](images/Browsing4.png)
+5.	搜索特定的微博。在搜索栏中输入关键字，可以按标题搜索，显示满足搜索关键字的微博:
+    ![](images/Browsing5.png)
+  
+#### 微博编辑
+1.	编辑微博。在任意微博显示页面，只要是自己发布的微博都可以编辑，点击edit进行编辑:
+    ![](images/Editing1.png)
+2.	完成编辑。在跳转的页面中完成新微博内容的编辑，点击post完成修改:
+    ![](images/Editing2.png)
+3.	修改后默认返回修改前的页面
+  
 
 ### 亮点
 1. **注册页面向手机发送SMS code**
