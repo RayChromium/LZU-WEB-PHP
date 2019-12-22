@@ -25,7 +25,7 @@
 <script type="text/javascript">
     function do_User_del(paraString)
     {
-        var is=window.confirm("Delete this guy?");
+        var is=window.confirm("Delete this guy and his posts?");
         if(is)
         {
             window.location.href="userDel.php?phone="+paraString;
@@ -134,7 +134,7 @@
 		if(isset($_GET["search"]))
 		{
 	?>
-			|<a href="adminUserManage.php">View All Users</a>
+	 | <a href="adminUserManage.php">View All Users</a>
 	<?php
 		}
 	?>
@@ -170,21 +170,20 @@
 		if($re["phone"] != $_COOKIE["logphone"])
 		{
 	?>
-			<a href="javascript:do_User_del('<?php echo $re['phone']."\&returnUrl="."$url" ?>')" >Delete</a>	
-	<?php
+			<a href="javascript:do_User_del('<?php echo $re['phone']."\&returnUrl="."$url" ?>')" >Delete</a> |<?php
 		}
 	?>
 	<?php
 		if($re['admin'] == 0)
 		{
 	?>
-			|	<a href="javascript:add_admin('<?php echo $re['phone']."\&returnUrl="."$url" ?>')">Add admin</a>
+			<a href="javascript:add_admin('<?php echo $re['phone']."\&returnUrl="."$url" ?>')">Add admin</a>
 	<?php
 		}
 		else if($re['phone'] != $_COOKIE["logphone"])
 		{
 	?>
-			|	<a href="javascript:remove_admin('<?php echo $re['phone']."\&returnUrl="."$url" ?>')">Remove admin</a>
+			<a href="javascript:remove_admin('<?php echo $re['phone']."\&returnUrl="."$url" ?>')">Remove admin</a>
 	<?php
 		}
 	?>

@@ -91,7 +91,7 @@
 	<form method="get" action="adminShow.php">
 		<fieldset>
 			
-				<label>Search</label>
+				<label>Search Tittle</label>
 
 				<input type="text" name="search" value="<?php echo $search?>">
 				<br>
@@ -171,7 +171,7 @@
 ?>
 <h3>Tittle:<?php echo $re['title']?></h3>
 <!-- 在Author上添加超链接，用GET传递这个人的phone进行筛选 -->
-<p>Nickname:  <a href = "adminShow.php?filter=<?php echo $re["phone"] ?>"><?php echo $re['nickname']?></a> | Publish time:<?php echo $re['time']?> | IP:<?php echo $re['address']?></p>
+<p>Nickname:  <a href = "adminShow.php?filter=<?php echo $re["phone"] ?>"><?php echo $re['nickname']?></a> | Publish time:<?php echo $re['time']?> | Location:<?php echo $re['address']?></p>
 <p>Content:  <?php echo $re['content']?></p>
 
 

@@ -1,8 +1,6 @@
 <?php
 
-
-
-$conn = @new mysqli('localhost','root','','mydb');
+$conn = @new mysqli('localhost','root','zxy','mydb');
 
 if ($conn->connect_errno!=0) {
 	die ("Faild ".$conn->connect_errro);

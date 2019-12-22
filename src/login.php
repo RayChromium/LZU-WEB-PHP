@@ -58,6 +58,7 @@
 		</fieldset>
 	</form>
 </div>
+<p>Copyright © Xinyu Zhang, Rui cai. All rights reserved.</p>
 </body>
 </html>
 
@@ -80,7 +81,7 @@
 			$result = $conn->query($sql);
 			//判断用户是否注册
 			$nums=$result->num_rows;
-			if ($nums==0) echo "This phone isn't registered."."<br>";
+			if ($nums==0) echo "This phone wasn't registered."."<br>";
 			else {
 				$checkpass = $result->fetch_array();
 				//degug
