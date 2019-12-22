@@ -30,7 +30,7 @@
 1. 进入`XAMPP`安装目录下的`htdocs`文件夹： `cd $(InstallDirectory)/xampp/htdocs`
 2. 将本仓库内容`clone`到此目录下： `git clone https://github.com/RayChromium/LZU-WEB-PHP.git` 。(p.s. 如果没有安装`Git`，也可以点击右上方的`clone or download`,选择下载`.zip`压缩包解压后放入`htdocs`)
 3. 开启`XAMPP`，启用`Apache`与`MySQL`
-4. 打开浏览器，在地址栏输入`localhost/LZU-WEB-PHP/src/login`即可使用
+4. 打开浏览器，在地址栏输入`localhost/LZU-WEB-PHP/src/login.php`即可使用
 5. (可选)本仓库的目录结构如下：  
    ```tree
      LZU-WEB-PHP  
